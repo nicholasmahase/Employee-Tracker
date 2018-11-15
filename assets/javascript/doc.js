@@ -16,11 +16,6 @@ var config = {
  
 
   // snapshot of data to send to firebase
-
-  database.ref("formInfo").on("value", function(snapshot) {
-
-
-    });
     $("#submit").on("click", function(event){
         event.preventDefault();
         //Inital Value
@@ -41,26 +36,11 @@ var config = {
       rate: rate
   })
 
- // The createRow function takes data returned form and appends the table data to the tbody
+
+});
+
+         // The createRow function takes data returned form and appends the table data to the tbody
  database.ref("formInfo").on("child_added",function(childSnapshot) {
-    // Create a new table row element
-   // var tRow = $("<tr>");
-
-    // Methods run on jQuery selectors return the selector they we run on
-    // This is why we can create and save a reference to a td in the same statement we update its text
-   // var nameTd = $("<td>").text(name);
-    //var roleTd = $("<td>").text(role);
-    //var dateTd = $("<td>").text(date);
-   // var rateTd = $("<td>").text(rate);
-      
-    // Append the newly created table data to the table row
-   // tRow.append(nameTd, roleTd, dateTd, rateTd);
-    // Append the table row to the table body
-   // $("tbody").append(tRow);
-   
-
-  var addEmployeeRow = $(".tbody");
-
     var employeeData = "<tr>";
     employeeData += "<td>" + childSnapshot.val().name + "</td>";
     employeeData += "<td>" + childSnapshot.val().role + "</td>";
@@ -70,9 +50,8 @@ var config = {
     employeeData += "<td></td>";
     employeeData += "</tr>";
 
-    addEmployeeRow.append(employeeData);
+    $('tbody').append(employeeData);
  });
-        });
     
         
 
